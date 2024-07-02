@@ -43,6 +43,7 @@ RUN \
   make -C src install && \
   rm -rf /etc/wireguard && \
   ln -s /config/wg_confs /etc/wireguard && \
+  echo -e "net.ipv4.ip_forward=1\nnet.ipv6.conf.all.forwarding=1" > /etc/sysctl.d/99-sysctl.conf && \
   echo "**** clean up ****" && \
   apk del --no-network build-dependencies && \
   rm -rf \
